@@ -1,0 +1,24 @@
+{
+  "name": "react-native-select-plus",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "author": {
+    "name": "saveliy_kremen"
+  },
+  "description": "Select component for react-native",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saveliy_kremen/react-native-select-plus.git"
+  },
+  "scripts": {
+    "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "version": "0.1.0"
+}
