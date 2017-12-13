@@ -20,5 +20,5 @@
     "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/",
     "prepublish": "npm run compile"
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
