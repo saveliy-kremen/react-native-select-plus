@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saveliy_kremen/react-native-select-plus.git"
+    "url": "git+https://github.com/saveliy-kremen/react-native-select-plus.git"
   },
   "scripts": {
     "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/"
