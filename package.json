@@ -17,8 +17,7 @@
     "url": "git+https://github.com/saveliy_kremen/react-native-select-plus.git"
   },
   "scripts": {
-    "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/",
-    "prepublish": "npm run compile"
+    "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/"
   },
   "version": "0.1.1"
 }
