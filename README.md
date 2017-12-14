@@ -77,14 +77,16 @@ class SelectExample extends Component {
 }
 
 ## Props
-| Prop Name       | Data Type | Default Values  | Description                                      |
-|-----------------|-----------|-----------------|--------------------------------------------------|
-| onSelect        | function  | null            | function that executes on selection of an option |
-| placeholder     | string    | Select          | Text to show as default text                     |
-| style           | object    | null            | To style the select box.                         |
-| textStyle       | object    | null            | To style the text shown in the box               |
-| search          | bool      | true            | Use search in conponent                          |
-| initKey         | string    | null            | Init key for default option                      |
+| Prop Name           | Data Type | Default Values  | Description                                      |
+|---------------------|-----------|-----------------|--------------------------------------------------|
+| onSelect            | function  | null            | function that executes on selection of an option |
+| placeholder         | string    | Select          | Text to show as default text                     |
+| style               | object    | null            | To style the select box.                         |
+| textStyle           | object    | null            | To style the text shown in the box               |
+| search              | bool      | true            | Use search in conponent                          |
+| initKey             | string    | null            | Init key for default option                      |
+| parentScrollEnable  | function    | null          | Hack for Android nested ScrollView               |
+| parentScrollDisable | function    | null          | Hack for Android nested ScrollView               |
 
 
 The MIT License (MIT). Please see [LICENSE](LICENSE) for more information. 
