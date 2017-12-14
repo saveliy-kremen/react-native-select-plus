@@ -1,7 +1,7 @@
 {
   "name": "react-native-select-plus",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "author": {
     "name": "saveliy_kremen"
   },
@@ -15,9 +15,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saveliy-kremen/react-native-select-plus.git"
-  },
-  "scripts": {
-    "compile": "babel --presets es2015 --plugins transform-react-jsx -d lib/ src/"
   },
   "version": "0.1.3"
 }
