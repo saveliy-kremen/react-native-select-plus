@@ -37,7 +37,7 @@ class Items extends React.Component {
 
     const renderedItems = items.map(item => {
       return item.section ? (
-        <View style={{ padding: 5 }}>
+        <View style={{ padding: 5 }} key={item.key}>
           <Text style={{ fontWeight: "bold" }}>{item.label}</Text>
         </View>
       ) : (

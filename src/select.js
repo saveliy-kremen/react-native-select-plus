@@ -43,8 +43,9 @@ class Select extends React.Component {
 
   _reset() {
     const { placeholder } = this.props;
-    this.setState({ value: placeholder, show_options: false });
+    this.setState({ value: placeholder, show_options: false, search_text: "" });
     this.props.onSelect(null, null);
+    this.props.parentScrollEnable();
   }
 
   _onPress() {
@@ -52,12 +53,14 @@ class Select extends React.Component {
       this.setState({ show_options: false, search_text: "" });
     } else {
       this.setState({ show_options: true });
+      this.props.parentScrollDisable();
     }
   }
 
   _handleSelect(key, label) {
     this.setState({ show_options: false, value: label, search_text: "" });
     this.props.onSelect(key, label);
+    this.props.parentScrollEnable();
   }
 
   _onChangeInput(text) {
@@ -69,12 +72,21 @@ class Select extends React.Component {
       show_options: false,
       search_text: ""
     });
+    this.props.parentScrollEnable();
   }
 
   render() {
-    const { width, height, data, style, styleOption, styleText } = this.props;
+    const {
+      width,
+      height,
+      data,
+      style,
+      styleOption,
+      styleText,
+      search
+    } = this.props;
     const dimensions = { width, height };
-
+    console.log(search);
     return (
       <View>
         {this.state.show_options && (
@@ -88,7 +100,7 @@ class Select extends React.Component {
             { flexDirection: "row", justifyContent: "space-between" }
           ]}
         >
-          {this.state.show_options && this.props.search ? (
+          {this.state.show_options && search ? (
             <TouchableWithoutFeedback onPress={this._onPress.bind(this)}>
               <View
                 style={{
