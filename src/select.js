@@ -86,7 +86,7 @@ class Select extends React.Component {
       search
     } = this.props;
     const dimensions = { width, height };
-    console.log(search);
+
     return (
       <View>
         {this.state.show_options && (

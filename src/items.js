@@ -35,15 +35,15 @@ class Items extends React.Component {
   render() {
     const { items, onPress, width, height } = this.props;
 
-    const renderedItems = items.map(item => {
+    const renderedItems = items.map((item, idx) => {
       return item.section ? (
-        <View style={{ padding: 5 }} key={item.key}>
+        <View style={{ padding: 5 }} key={idx}>
           <Text style={{ fontWeight: "bold" }}>{item.label}</Text>
         </View>
       ) : (
         <TouchableWithoutFeedback
           onPress={() => onPress(item.key, item.label)}
-          key={item.key}
+          key={idx}
         >
           <View style={{ padding: 5 }}>
             <Text style={{ marginLeft: 20 }}>{item.label}</Text>
