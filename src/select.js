@@ -5,12 +5,12 @@ import {
   Component,
   TouchableWithoutFeedback,
   View,
-  TextInput
+  TextInput,
+  Modal
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const Option = require("./option");
-const Overlay = require("./overlay");
 const Items = require("./items");
 
 const window = Dimensions.get("window");
@@ -35,7 +35,7 @@ class Select extends React.Component {
       value: this.props.initKey
         ? this.props.data.filter(item => item.key === this.props.initKey)[0]
             .label
-        : this.props.placeholder || null,
+        : this.props.placeholder,
       show_options: false,
       search_text: ""
     };
@@ -45,34 +45,53 @@ class Select extends React.Component {
     const { placeholder } = this.props;
     this.setState({ value: placeholder, show_options: false, search_text: "" });
     this.props.onSelect(null, null);
-    this.props.parentScrollEnable();
+    if (this.props.parentScrollEnable) {
+      this.props.parentScrollEnable();
+    }
   }
 
   _onPress() {
+    this._select.measure((width, height, px, py, fx, fy) => {
+      const location = {
+        fx: fx,
+        fy: fy,
+        px: px,
+        py: py,
+        width: width,
+        height: height
+      };
+      this.setState({ location });
+    });
     if (this.state.show_options) {
       this.setState({ show_options: false, search_text: "" });
     } else {
       this.setState({ show_options: true });
-      this.props.parentScrollDisable();
+      if (this.props.parentScrollDisable) {
+        this.props.parentScrollDisable();
+      }
     }
   }
 
   _handleSelect(key, label) {
     this.setState({ show_options: false, value: label, search_text: "" });
     this.props.onSelect(key, label);
-    this.props.parentScrollEnable();
+    if (this.props.parentScrollEnable) {
+      this.props.parentScrollEnable();
+    }
   }
 
   _onChangeInput(text) {
     this.setState({ search_text: text });
   }
 
-  _onOverlayPress() {
+  _handleOptionsClose() {
     this.setState({
       show_options: false,
       search_text: ""
     });
-    this.props.parentScrollEnable();
+    if (this.props.parentScrollEnable) {
+      this.props.parentScrollEnable();
+    }
   }
 
   render() {
@@ -89,10 +108,10 @@ class Select extends React.Component {
 
     return (
       <View>
-        {this.state.show_options && (
-          <Overlay onPress={this._onOverlayPress.bind(this)} />
-        )}
         <View
+          ref={ref => {
+            this._select = ref;
+          }}
           style={[
             styles.container,
             style,
@@ -121,7 +140,7 @@ class Select extends React.Component {
                 />
                 <TextInput
                   onChangeText={this._onChangeInput.bind(this)}
-                  placeholder={"Search"}
+                  placeholder={this.props.searchPlaceholder}
                   underlineColorAndroid="transparent"
                   style={{ flex: 5 }}
                 />
@@ -177,9 +196,12 @@ class Select extends React.Component {
               const regex = new RegExp(`(${parts.join("|")})`, "ig");
               return regex.test(item.label);
             })}
+            show={this.state.show_options}
             width={width}
             height={height}
+            location={this.state.location}
             onPress={this._handleSelect.bind(this)}
+            handleClose={this._handleOptionsClose.bind(this)}
           />
         )}
       </View>
@@ -192,14 +214,18 @@ Select.propTypes = {
   height: React.PropTypes.number,
   onSelect: React.PropTypes.func,
   search: React.PropTypes.bool,
-  initKey: React.PropTypes.string
+  searchPlaceholder: React.PropTypes.string,
+  initKey: React.PropTypes.number
 };
 
 Select.defaultProps = {
   width: 200,
   height: 40,
   onSelect: () => {},
-  search: true
+  search: true,
+  initKey: 0,
+  placeholder: "Select",
+  searchPlaceholder: "Search"
 };
 
 module.exports = Select;

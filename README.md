@@ -63,7 +63,7 @@ class SelectExample extends Component {
         <Select
           data={this.items}
           width={250}
-          defaultValue="Select a value ..."
+          placeholder="Select a value ..."
           onSelect={this.onSelectedItemsChange.bind(this)}
           data={data}
           search={true}

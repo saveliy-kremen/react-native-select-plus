@@ -6,24 +6,22 @@ import {
   View,
   ScrollView,
   TouchableWithoutFeedback,
-  Text
+  Text,
+  Modal
 } from "react-native";
+
+const Overlay = require("./overlay");
 
 const window = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  scrollView: {
-    height: 120,
-    width: 198 //TODO: this needs to be dynamic
-  },
   container: {
     position: "absolute",
     borderColor: "#BDBDC1",
     borderWidth: 2 / window.scale,
     borderTopColor: "transparent",
     backgroundColor: "white",
-    opacity: 0.9,
-    zIndex: 9
+    opacity: 0.9
   }
 });
 
@@ -33,7 +31,21 @@ class Items extends React.Component {
   }
 
   render() {
-    const { items, onPress, width, height } = this.props;
+    const {
+      items,
+      onPress,
+      width,
+      height,
+      location,
+      show,
+      handleClose
+    } = this.props;
+    let x = 0;
+    let y = 0;
+    if (location) {
+      x = location.fx;
+      y = location.fy;
+    }
 
     const renderedItems = items.map((item, idx) => {
       return item.section ? (
@@ -53,15 +65,25 @@ class Items extends React.Component {
     });
 
     return (
-      <View style={[styles.container, { top: height }]}>
-        <ScrollView
-          style={{ width: width - 2, height: height * 3 }}
-          automaticallyAdjustContentInsets={false}
-          bounces={false}
+      <Modal
+        animationType="none"
+        transparent={true}
+        visible={show}
+        onRequestClose={handleClose}
+      >
+        <Overlay onPress={handleClose} />
+        <View
+          style={[styles.container, { left: x, top: y + height, width: width }]}
         >
-          {renderedItems}
-        </ScrollView>
-      </View>
+          <ScrollView
+            style={{ width: width - 2, height: height * 3 }}
+            automaticallyAdjustContentInsets={false}
+            bounces={false}
+          >
+            {renderedItems}
+          </ScrollView>
+        </View>
+      </Modal>
     );
   }
 }
