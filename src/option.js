@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyleSheet, Component, View, Text } from "react-native";
 
 const styles = StyleSheet.create({
@@ -28,7 +29,7 @@ class Option extends React.Component {
 }
 
 Option.propTypes = {
-  children: React.PropTypes.string.isRequired
+  children: PropTypes.string.isRequired
 };
 
 module.exports = Option;

@@ -7,6 +7,7 @@
   },
   "description": "Select component for react-native",
   "devDependencies": {
+    "prop-types": "^15.5.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",

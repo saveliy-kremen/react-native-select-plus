@@ -35,21 +35,21 @@ class SelectExample extends Component {
   };
 
   this.items = [
-      { key: "1", section: true, label: "Fruits" },
-      { key: "2", label: "Red Apples" },
-      { key: "3", label: "Cherries" },
-      { key: "4", label: "Cranberries" },
-      { key: "5", label: "Pink Grapefruit" },
-      { key: "6", label: "Raspberries" },
-      { key: "7", section: true, label: "Vegetables" },
-      { key: "8", label: "Beets" },
-      { key: "9", label: "Red Peppers" },
-      { key: "10", label: "Radishes" },
-      { key: "11", label: "Radicchio" },
-      { key: "12", label: "Red Onions" },
-      { key: "13", label: "Red Potatoes" },
-      { key: "14", label: "Rhubarb" },
-      { key: "15", label: "Tomatoes" }
+      { key: 1, section: true, label: "Fruits" },
+      { key: 2, label: "Red Apples" },
+      { key: 3, label: "Cherries" },
+      { key: 4, label: "Cranberries" },
+      { key: 5, label: "Pink Grapefruit" },
+      { key: 6, label: "Raspberries" },
+      { key: 7, section: true, label: "Vegetables" },
+      { key: 8, label: "Beets" },
+      { key: 9, label: "Red Peppers" },
+      { key: 10, label: "Radishes" },
+      { key: 11, label: "Radicchio" },
+      { key: 12, label: "Red Onions" },
+      { key: 13, label: "Red Potatoes" },
+      { key: 14, label: "Rhubarb" },
+      { key: 15, label: "Tomatoes" }
     ];
 
   onSelectedItemsChange = (key, value) => {
@@ -81,12 +81,13 @@ class SelectExample extends Component {
 |---------------------|-----------|-----------------|--------------------------------------------------|
 | onSelect            | function  | null            | function that executes on selection of an option |
 | placeholder         | string    | Select          | Text to show as default text                     |
+| searchPlaceholder   | string    | Search          | Text to show as default search text              |
 | style               | object    | null            | To style the select box.                         |
 | textStyle           | object    | null            | To style the text shown in the box               |
 | search              | bool      | true            | Use search in conponent                          |
-| initKey             | string    | null            | Init key for default option                      |
-| parentScrollEnable  | function    | null          | Hack for Android nested ScrollView               |
-| parentScrollDisable | function    | null          | Hack for Android nested ScrollView               |
+| initKey             | number    | 0               | Init key for default option                      |
+| parentScrollEnable  | function  | null            | Hack for Android nested ScrollView               |
+| parentScrollDisable | function  | null            | Hack for Android nested ScrollView               |
 
 
 The MIT License (MIT). Please see [LICENSE](LICENSE) for more information. 

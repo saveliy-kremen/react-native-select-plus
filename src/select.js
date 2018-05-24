@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Dimensions,
   StyleSheet,
@@ -119,34 +120,7 @@ class Select extends React.Component {
             { flexDirection: "row", justifyContent: "space-between" }
           ]}
         >
-          {this.state.show_options && search ? (
-            <TouchableWithoutFeedback onPress={this._onPress.bind(this)}>
-              <View
-                style={{
-                  flex: 3,
-                  flexDirection: "row",
-                  justifyContent: "flex-start",
-                  alignItems: "center"
-                }}
-              >
-                <Icon
-                  name="ios-search-outline"
-                  style={{
-                    color: "black",
-                    fontSize: 26,
-                    marginLeft: 5,
-                    flex: 1
-                  }}
-                />
-                <TextInput
-                  onChangeText={this._onChangeInput.bind(this)}
-                  placeholder={this.props.searchPlaceholder}
-                  underlineColorAndroid="transparent"
-                  style={{ flex: 5 }}
-                />
-              </View>
-            </TouchableWithoutFeedback>
-          ) : (
+          {!this.state.show_options && (
             <TouchableWithoutFeedback onPress={this._onPress.bind(this)}>
               <View
                 style={{
@@ -202,6 +176,8 @@ class Select extends React.Component {
             location={this.state.location}
             onPress={this._handleSelect.bind(this)}
             handleClose={this._handleOptionsClose.bind(this)}
+            onChangeText={this._onChangeInput.bind(this)}
+            placeholder={this.props.searchPlaceholder}
           />
         )}
       </View>
@@ -210,12 +186,12 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  onSelect: React.PropTypes.func,
-  search: React.PropTypes.bool,
-  searchPlaceholder: React.PropTypes.string,
-  initKey: React.PropTypes.number
+  width: PropTypes.number,
+  height: PropTypes.number,
+  onSelect: PropTypes.func,
+  search: PropTypes.bool,
+  searchPlaceholder: PropTypes.string,
+  initKey: PropTypes.number
 };
 
 Select.defaultProps = {

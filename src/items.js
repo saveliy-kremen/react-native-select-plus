@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Dimensions,
   StyleSheet,
@@ -6,9 +7,11 @@ import {
   View,
   ScrollView,
   TouchableWithoutFeedback,
+  TextInput,
   Text,
   Modal
 } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const Overlay = require("./overlay");
 
@@ -16,10 +19,10 @@ const window = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     position: "absolute",
     borderColor: "#BDBDC1",
     borderWidth: 2 / window.scale,
-    borderTopColor: "transparent",
     backgroundColor: "white",
     opacity: 0.9
   }
@@ -38,7 +41,9 @@ class Items extends React.Component {
       height,
       location,
       show,
-      handleClose
+      handleClose,
+      onChangeText,
+      placeholder
     } = this.props;
     let x = 0;
     let y = 0;
@@ -72,9 +77,39 @@ class Items extends React.Component {
         onRequestClose={handleClose}
       >
         <Overlay onPress={handleClose} />
-        <View
-          style={[styles.container, { left: x, top: y + height, width: width }]}
-        >
+        <View style={[styles.container, { left: x, top: y, width: width }]}>
+          <View
+            style={{
+              height: height,
+              borderBottomColor: "#BDBDC1",
+              borderBottomWidth: 2 / window.scale
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                alignItems: "center"
+              }}
+            >
+              <Icon
+                name="ios-search-outline"
+                style={{
+                  color: "black",
+                  fontSize: 26,
+                  marginLeft: 5,
+                  flex: 1
+                }}
+              />
+              <TextInput
+                onChangeText={onChangeText}
+                placeholder={placeholder}
+                underlineColorAndroid="transparent"
+                style={{ flex: 5, margin: 0, padding: 0 }}
+              />
+            </View>
+          </View>
           <ScrollView
             style={{ width: width - 2, height: height * 3 }}
             automaticallyAdjustContentInsets={false}
@@ -89,7 +124,7 @@ class Items extends React.Component {
 }
 
 Items.propTypes = {
-  onPress: React.PropTypes.func
+  onPress: PropTypes.func
 };
 
 Items.defaultProps = {
