@@ -94,7 +94,7 @@ class Items extends React.Component {
               }}
             >
               <Icon
-                name="ios-search-outline"
+                name="ios-search"
                 style={{
                   color: "black",
                   fontSize: 26,

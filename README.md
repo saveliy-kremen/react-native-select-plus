@@ -6,21 +6,21 @@
 
 ## Installation
 
-``` bash
+```bash
 $ npm install react-native-select-plus --save
 ```
+
 or use yarn
 
-``` bash
+```bash
 $ yarn add react-native-select-plus
 ```
 
-
 ## Usage
+
 Note: Ensure to add and configure [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) to your project before using this package.
 
 The snippet below shows how the component can be used
-
 
 ```javascript
 // import component
@@ -75,19 +75,20 @@ class SelectExample extends Component {
     );
   }
 }
+```
 
 ## Props
-| Prop Name           | Data Type | Default Values  | Description                                      |
-|---------------------|-----------|-----------------|--------------------------------------------------|
-| onSelect            | function  | null            | function that executes on selection of an option |
-| placeholder         | string    | Select          | Text to show as default text                     |
-| searchPlaceholder   | string    | Search          | Text to show as default search text              |
-| style               | object    | null            | To style the select box.                         |
-| textStyle           | object    | null            | To style the text shown in the box               |
-| search              | bool      | true            | Use search in conponent                          |
-| initKey             | number    | 0               | Init key for default option                      |
-| parentScrollEnable  | function  | null            | Hack for Android nested ScrollView               |
-| parentScrollDisable | function  | null            | Hack for Android nested ScrollView               |
 
+| Prop Name           | Data Type | Default Values | Description                                      |
+| ------------------- | --------- | -------------- | ------------------------------------------------ |
+| onSelect            | function  | null           | function that executes on selection of an option |
+| placeholder         | string    | Select         | Text to show as default text                     |
+| searchPlaceholder   | string    | Search         | Text to show as default search text              |
+| style               | object    | null           | To style the select box.                         |
+| textStyle           | object    | null           | To style the text shown in the box               |
+| search              | bool      | true           | Use search in conponent                          |
+| initKey             | number    | 0              | Init key for default option                      |
+| parentScrollEnable  | function  | null           | Hack for Android nested ScrollView               |
+| parentScrollDisable | function  | null           | Hack for Android nested ScrollView               |
 
-The MIT License (MIT). Please see [LICENSE](LICENSE) for more information. 
+The MIT License (MIT). Please see [LICENSE](LICENSE) for more information.
