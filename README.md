@@ -4,6 +4,10 @@
 
 > Simple select component for react-native.
 
+## Demo
+
+<img src="https://raw.githubusercontent.com/williamgurzoni/react-native-select-plus/master/demo/Example-iOS.gif">
+
 ## Installation
 
 ```bash
@@ -25,16 +29,14 @@ The snippet below shows how the component can be used
 ```javascript
 // import component
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import Select from 'react-native-select-plus';
 
 class SelectExample extends Component {
 
-  this.state = {
-    value: null
-  };
-
-  this.items = [
+  state = {
+    value: null,
+    items: [
       { key: 1, section: true, label: "Fruits" },
       { key: 2, label: "Red Apples" },
       { key: 3, label: "Cherries" },
@@ -51,25 +53,27 @@ class SelectExample extends Component {
       { key: 14, label: "Rhubarb" },
       { key: 15, label: "Tomatoes" }
     ];
+  };
+
+
 
   onSelectedItemsChange = (key, value) => {
     this.setState({ value: value });
   };
 
   render() {
-    const { value } = this.state;
+    const { value, items } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <Select
-          data={this.items}
+          data={items}
           width={250}
           placeholder="Select a value ..."
           onSelect={this.onSelectedItemsChange.bind(this)}
-          data={data}
           search={true}
         />
         <View>
-          {this.state.value}
+          {value}
         </View>
       </View>
     );
