@@ -73,7 +73,7 @@ class SelectExample extends Component {
           search={true}
         />
         <View>
-          {value}
+          <Text>{value}</Text>
         </View>
       </View>
     );
